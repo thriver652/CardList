@@ -1,5 +1,3 @@
-// screens/AllCardsScreen.tsx
-
 import React from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 
@@ -44,6 +42,12 @@ const AllCardsScreen = ({
           </View>
         )}
       />
+
+      <TouchableOpacity
+        
+        onPress={() => navigation.goBack()}>
+        <Text style={{color: 'black'}}>Go Back</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -71,6 +75,13 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     padding: 16,
     marginBottom: 16,
+  },
+  goBackButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'green',
+    padding: 16,
+    marginTop: 16,
   },
 });
 

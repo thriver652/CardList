@@ -1,5 +1,3 @@
-// screens/HomeScreen.tsx
-
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -9,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import AllCardsScreen from './AllCardsScreen';
 
 const HomeScreen = ({
   cards,
@@ -32,12 +29,14 @@ const HomeScreen = ({
 
   const handleSave = () => {
     setSaved(true);
-    navigation.navigate('AllCards', {savedCards: cards});
+    // Navigate to the ThirdScreen after saving
+    navigation.navigate('Third');
   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
       {saved ? (
+        // Display filters based on date and addition
         <View style={styles.filtersContainer}>
           <TouchableOpacity
             style={styles.filterButton}
