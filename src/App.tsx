@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = (): React.JSX.Element => {
   const [cards, setCards] = useState<
     Array<{title: string; description: string; date: string}>
-  >(new Array(2).fill({title: '', description: '', date: ''}));
+  >(new Array(5).fill({title: '', description: '', date: ''}));
 
   return (
     <NavigationContainer>
