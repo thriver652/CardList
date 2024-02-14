@@ -9,11 +9,11 @@ const AllCardsScreen = ({
   navigation: any;
 }): React.JSX.Element => {
   const handleFilterByDate = () => {
-    console.log('Filtering by Date');
+    console.log('Date');
   };
 
   const handleFilterByAddition = () => {
-    console.log('Filtering by Addition');
+    console.log('Addition');
   };
 
   return (
