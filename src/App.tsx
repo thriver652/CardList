@@ -16,14 +16,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = (): React.JSX.Element => {
   const [cards, setCards] = useState<
     Array<{title: string; description: string; date: string}>
-  >(new Array(1).fill({title: '', description: '', date: ''}));
+  >(new Array(4).fill({title: '', description: '', date: ''}));
 
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="CardsList">
         <Stack.Screen
           name="CardsList"
-          options={{title: 'My Cards'}}
+          options={{title: 'Add your Data'}}
           component={({navigation}) => (
             <CardsListScreen
               cards={cards}
