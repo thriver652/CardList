@@ -1,5 +1,3 @@
-// screens/CardsListScreen.tsx
-
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -59,9 +57,9 @@ const CardsListScreen = ({
               navigation.navigate('CardDetails', {cardIndex: index})
             }>
             <View style={styles.card}>
-              <Text>{card.title}</Text>
-              <Text>{card.description}</Text>
-              <Text>{card.date}</Text>
+              <Text style={styles.title}>Title : {card.title}</Text>
+              <Text style={styles.desc}>Description : {card.description}</Text>
+              <Text style={styles.date}>Date : {card.date}</Text>
             </View>
           </TouchableOpacity>
         ))}
@@ -75,7 +73,7 @@ const CardsListScreen = ({
           ]}
           disabled={!isSaveButtonEnabled}
           onPress={() => handleSave()}>
-          <Text style={{color: 'white'}}>Save</Text>
+          <Text style={{color: 'white', fontSize: 18}}>Save</Text>
         </TouchableOpacity>
       )}
     </SafeAreaView>
@@ -87,10 +85,24 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   card: {
+    marginTop: 16,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: 'black',
+    borderRadius: 8,
     padding: 16,
-    marginBottom: 16,
+    marginBottom: 26,
+  },
+  title: {
+    fontSize: 20,
+    color: 'black',
+  },
+  desc: {
+    fontSize: 20,
+    color: 'black',
+  },
+  date: {
+    fontSize: 20,
+    color: 'black',
   },
   saveButton: {
     alignItems: 'center',

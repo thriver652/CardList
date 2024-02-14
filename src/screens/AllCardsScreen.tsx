@@ -22,12 +22,12 @@ const AllCardsScreen = ({
         <TouchableOpacity
           style={styles.filterButton}
           onPress={handleFilterByDate}>
-          <Text style={{color: 'white'}}>Filter by Date</Text>
+          <Text style={{color: 'white', fontSize: 17}}>Filter by Date</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.filterButton}
+          style={styles.additionButton}
           onPress={handleFilterByAddition}>
-          <Text style={{color: 'white'}}>Filter by Addition</Text>
+          <Text style={{color: 'black', fontSize: 17}}>Filter by Addition</Text>
         </TouchableOpacity>
       </View>
 
@@ -36,18 +36,12 @@ const AllCardsScreen = ({
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
           <View style={styles.card}>
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
-            <Text>{item.date}</Text>
+            <Text style={styles.title}>Title : {item.title}</Text>
+            <Text style={styles.desc}>Description : {item.description}</Text>
+            <Text style={styles.date}>Date : {item.date}</Text>
           </View>
         )}
       />
-
-      {/* <TouchableOpacity
-        style={styles.goBackButton}
-        onPress={() => navigation.goBack()}>
-        <Text style={{color: 'black'}}>Go Back</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };
@@ -60,7 +54,7 @@ const styles = StyleSheet.create({
   filtersContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 16,
+    marginTop: 5,
   },
   filterButton: {
     borderRadius: 10,
@@ -72,10 +66,35 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     marginVertical: 10,
   },
+  title: {
+    fontSize: 20,
+    color: 'black',
+  },
+  desc: {
+    fontSize: 20,
+    color: 'black',
+  },
+  date: {
+    fontSize: 20,
+    color: 'black',
+  },
+  additionButton: {
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ddf',
+    color: 'black',
+    padding: 16,
+    flex: 1,
+    marginHorizontal: 8,
+    marginVertical: 10,
+  },
   card: {
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: 'black',
+    borderRadius: 10,
     padding: 16,
+    marginTop: 10,
     marginBottom: 16,
   },
   goBackButton: {

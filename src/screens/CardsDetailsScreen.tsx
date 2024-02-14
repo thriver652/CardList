@@ -52,6 +52,7 @@ const CardDetailsScreen = ({
       <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
         <Text style={{color: 'white'}}>Save</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.discardButton}
         onPress={() => {
@@ -60,7 +61,7 @@ const CardDetailsScreen = ({
           setDate(card.date);
           navigation.goBack();
         }}>
-        <Text style={{color: 'white'}}>Discard Changes</Text>
+        <Text style={{color: 'white'}}>Discard</Text>
       </TouchableOpacity>
     </View>
   );
@@ -72,22 +73,41 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: 'black',
     padding: 8,
     marginBottom: 16,
+    borderRadius: 10,
+    fontSize: 20,
+    color: 'black',
+  },
+  title: {
+    fontSize: 20,
+    color: 'black',
+  },
+  desc: {
+    fontSize: 20,
+    color: 'black',
+  },
+  date: {
+    fontSize: 20,
+    color: 'black',
   },
   saveButton: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'green',
     padding: 16,
+    marginTop: 10,
     marginBottom: 8,
+    borderRadius: 20,
   },
   discardButton: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'gray',
+    marginTop: 10,
     padding: 16,
+    borderRadius: 20,
   },
 });
 
