@@ -1,38 +1,51 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 
 const AllCardsScreen = ({
   savedCards,
-  navigation,
 }: {
   savedCards: Array<{title: string; description: string; date: string}>;
   navigation: any;
 }): React.JSX.Element => {
+  const [sortBy, setSortBy] = useState<'date' | 'addition'>('addition');
+
   const handleFilterByDate = () => {
-    console.log('Date');
+    setSortBy('date');
   };
 
   const handleFilterByAddition = () => {
-    console.log('Addition');
+    setSortBy('addition');
   };
+
+  const sortedCards = [...savedCards];
+
+  if (sortBy === 'date') {
+    sortedCards.sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.filtersContainer}>
         <TouchableOpacity
-          style={styles.filterButton}
+          style={
+            sortBy === 'date' ? styles.activeFilterButton : styles.filterButton
+          }
           onPress={handleFilterByDate}>
-          <Text style={{color: 'white', fontSize: 17}}>Filter by Date</Text>
+          <Text style={{color: 'black', fontSize: 17}}>Filter by Date</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.additionButton}
+          style={
+            sortBy === 'addition'
+              ? styles.activeFilterButton
+              : styles.additionButton
+          }
           onPress={handleFilterByAddition}>
           <Text style={{color: 'black', fontSize: 17}}>Filter by Addition</Text>
         </TouchableOpacity>
       </View>
 
       <FlatList
-        data={savedCards}
+        data={sortedCards}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
           <View style={styles.card}>
@@ -60,7 +73,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'orange',
+    backgroundColor: 'rgba(215, 244, 232, 1)',
+    //  borderWidth: 1,
+    padding: 16,
+    
+    flex: 1,
+    marginHorizontal: 8,
+    marginVertical: 10,
+  },
+  activeFilterButton: {
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(215, 244, 232, 1)',
+    borderWidth: 1,
     padding: 16,
     flex: 1,
     marginHorizontal: 8,
@@ -82,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ddf',
+    backgroundColor: 'rgba(215, 244, 232, 1)',
     color: 'black',
     padding: 16,
     flex: 1,
@@ -96,13 +122,6 @@ const styles = StyleSheet.create({
     padding: 16,
     marginTop: 10,
     marginBottom: 16,
-  },
-  goBackButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'green',
-    padding: 16,
-    marginTop: 16,
   },
 });
 

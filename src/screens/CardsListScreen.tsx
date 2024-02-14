@@ -34,21 +34,6 @@ const CardsListScreen = ({
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* {saved ? (
-        <View style={styles.filtersContainer}>
-          <TouchableOpacity
-            style={styles.filterButton}
-            onPress={() => console.log('Filter by Date pressed')}>
-            <Text style={{color: 'white'}}>Filter by Date</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.filterButton}
-            onPress={() => console.log('Filter by Addition pressed')}>
-            <Text style={{color: 'white'}}>Filter by Addition</Text>
-          </TouchableOpacity>
-        </View>
-      ) : null} */}
-
       <ScrollView contentContainerStyle={styles.scrollView}>
         {cards.map((card, index) => (
           <TouchableOpacity

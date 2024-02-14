@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const CardDetailsScreen = ({
   card,
@@ -22,10 +23,24 @@ const CardDetailsScreen = ({
 }): React.JSX.Element => {
   const [title, setTitle] = useState(card.title);
   const [description, setDescription] = useState(card.description);
-  const [date, setDate] = useState(card.date);
+  const [date, setDate] = useState(new Date(card.date));
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleDateConfirm = (selectedDate: Date) => {
+    hideDatePicker();
+    setDate(selectedDate);
+  };
 
   const handleSave = () => {
-    setCard({title, description, date});
+    setCard({title, description, date: date.toISOString().split('T')[0]});
     navigation.navigate('CardsList');
   };
 
@@ -43,22 +58,24 @@ const CardDetailsScreen = ({
         value={description}
         onChangeText={text => setDescription(text)}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Date"
-        value={date}
-        onChangeText={text => setDate(text)}
+      <TouchableOpacity style={styles.input} onPress={showDatePicker}>
+        <Text style={styles.date}>{date.toDateString()}</Text>
+      </TouchableOpacity>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleDateConfirm}
+        onCancel={hideDatePicker}
       />
       <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
         <Text style={{color: 'white'}}>Save</Text>
       </TouchableOpacity>
-
       <TouchableOpacity
         style={styles.discardButton}
         onPress={() => {
           setTitle(card.title);
           setDescription(card.description);
-          setDate(card.date);
+          setDate(new Date(card.date));
           navigation.goBack();
         }}>
         <Text style={{color: 'white'}}>Discard</Text>
@@ -80,17 +97,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
   },
-  title: {
-    fontSize: 20,
-    color: 'black',
-  },
-  desc: {
-    fontSize: 20,
-    color: 'black',
-  },
   date: {
     fontSize: 20,
-    color: 'black',
   },
   saveButton: {
     alignItems: 'center',
