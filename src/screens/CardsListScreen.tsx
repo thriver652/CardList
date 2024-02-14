@@ -1,3 +1,5 @@
+// screens/CardsListScreen.tsx
+
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -8,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-const HomeScreen = ({
+const CardsListScreen = ({
   cards,
   setCards,
   navigation,
@@ -29,14 +31,12 @@ const HomeScreen = ({
 
   const handleSave = () => {
     setSaved(true);
-    // Navigate to the ThirdScreen after saving
-    navigation.navigate('Third');
+    navigation.navigate('AllCards');
   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {saved ? (
-        // Display filters based on date and addition
+      {/* {saved ? (
         <View style={styles.filtersContainer}>
           <TouchableOpacity
             style={styles.filterButton}
@@ -49,13 +49,15 @@ const HomeScreen = ({
             <Text style={{color: 'white'}}>Filter by Addition</Text>
           </TouchableOpacity>
         </View>
-      ) : null}
+      ) : null} */}
 
       <ScrollView contentContainerStyle={styles.scrollView}>
         {cards.map((card, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => navigation.navigate('Details', {cardIndex: index})}>
+            onPress={() =>
+              navigation.navigate('CardDetails', {cardIndex: index})
+            }>
             <View style={styles.card}>
               <Text>{card.title}</Text>
               <Text>{card.description}</Text>
@@ -66,7 +68,6 @@ const HomeScreen = ({
       </ScrollView>
 
       {saved ? null : (
-        // Display Save button at the bottom if not saved
         <TouchableOpacity
           style={[
             styles.saveButton,
@@ -113,4 +114,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default CardsListScreen;

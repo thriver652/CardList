@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './screens/Home';
-import DetailsScreen from './screens/Details';
+import CardsListScreen from './screens/CardsListScreen';
+import CardDetailsScreen from './screens/CardsDetailsScreen';
+import AllCardsScreen from './screens/AllCardsScreen';
 
 export type RootStackParamList = {
-  Home: undefined;
-  Details: {cardIndex: number};
+  CardsList: undefined;
+  CardDetails: {cardIndex: number};
+  AllCards: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -18,12 +20,12 @@ const App = (): React.JSX.Element => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="CardsList">
         <Stack.Screen
-          name="Home"
-          options={{title: 'Cards'}}
+          name="CardsList"
+          options={{title: 'My Cards'}}
           component={({navigation}) => (
-            <HomeScreen
+            <CardsListScreen
               cards={cards}
               setCards={setCards}
               navigation={navigation}
@@ -31,10 +33,10 @@ const App = (): React.JSX.Element => {
           )}
         />
         <Stack.Screen
-          name="Details"
+          name="CardDetails"
           options={{title: 'Card Details'}}
           component={({route, navigation}) => (
-            <DetailsScreen
+            <CardDetailsScreen
               card={cards[route.params.cardIndex]}
               setCard={updatedCard => {
                 const updatedCards = [...cards];
@@ -43,6 +45,13 @@ const App = (): React.JSX.Element => {
               }}
               navigation={navigation}
             />
+          )}
+        />
+        <Stack.Screen
+          name="AllCards"
+          options={{title: 'All Cards'}}
+          component={({navigation}) => (
+            <AllCardsScreen savedCards={cards} navigation={navigation} />
           )}
         />
       </Stack.Navigator>

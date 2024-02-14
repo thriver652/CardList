@@ -1,5 +1,3 @@
-// screens/DetailsScreen.tsx
-
 import React, {useState} from 'react';
 import {
   TextInput,
@@ -9,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-const DetailsScreen = ({
+const CardDetailsScreen = ({
   card,
   setCard,
   navigation,
@@ -28,7 +26,7 @@ const DetailsScreen = ({
 
   const handleSave = () => {
     setCard({title, description, date});
-    navigation.navigate('Home');
+    navigation.navigate('CardsList');
   };
 
   return (
@@ -93,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen;
+export default CardDetailsScreen;

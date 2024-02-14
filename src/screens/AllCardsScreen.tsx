@@ -43,11 +43,11 @@ const AllCardsScreen = ({
         )}
       />
 
-      <TouchableOpacity
-        
+      {/* <TouchableOpacity
+        style={styles.goBackButton}
         onPress={() => navigation.goBack()}>
         <Text style={{color: 'black'}}>Go Back</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -63,12 +63,14 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   filterButton: {
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: 'orange',
     padding: 16,
     flex: 1,
     marginHorizontal: 8,
+    marginVertical: 10,
   },
   card: {
     borderWidth: 1,
