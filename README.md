@@ -1,4 +1,4 @@
-I am attaching the Screen Recording of the App please verify it.
+I am attaching the Screen Recording of the App please do verify it.
 
 https://github.com/thriver652/CardList/assets/74093651/1a1762ba-cf70-42ad-bba4-2520fb84cb69
 
