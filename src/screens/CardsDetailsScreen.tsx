@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 20,
+    color: 'black',
   },
   saveButton: {
     alignItems: 'center',
