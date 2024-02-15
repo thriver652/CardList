@@ -1,3 +1,8 @@
+I am attaching the Screen Recording of the App please verify it.
+
+https://github.com/thriver652/CardList/assets/74093651/1a1762ba-cf70-42ad-bba4-2520fb84cb69
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
